@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>iSURE Program  | Blog of Zihang</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Zihang-Xu-2002.github.io/favicon.ico?v=1696552284828">
+<link rel="stylesheet" href="https://Zihang-Xu-2002.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="I participated in iSURE program in University of Notre Dame fron July 2023 to August 2023. I worked in Computational Mec..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Zihang-Xu-2002.github.io">
+        <img src="https://Zihang-Xu-2002.github.io/images/avatar.png?v=1696552284828" class="site-logo">
+        <h1 class="site-title">Blog of Zihang</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Archives
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Tags
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Zihang-Xu-2002.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">iSURE Program </h2>
+            <div class="post-date">2023-09-09</div>
+            
+            <div class="post-content" v-pre>
+              <p>I participated in iSURE program in University of Notre Dame fron July 2023 to August 2023. I worked in Computational Mechanics &amp; Scientific Artificial Intelligence Lab and my mentor was Jianxun Wang.</p>
+<h1 id="introduction">Introduction</h1>
+<p>In this iSURE program, I focused on verifying the performance of RNNs and Transformer on temporal learning. I built RNN, LSTM and Transformer and tested them on temporal data. Models were trained and tested in an auto-regressive method, and I tried some methods and parameters to improve the performance of models.</p>
+<h1 id="data">Data</h1>
+<p>Data in this dataset is collected from the surface of a pump used for enhancing blood flow. There are totally 11539 steps in dataset 2, and PCA dimension reduction is performed on this dataset, hence the importance of channel decreases along the index.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694683155755.png" alt="" loading="lazy"></p>
+<h1 id="models">Models</h1>
+<p>I built two kinds of models:simple slide-wondiw models and slide-window models using boundary condition.</p>
+<h2 id="simple-slide-window-models">Simple Slide-Window models</h2>
+<p>The content within the dashed line is one evolve. Assuming the window length is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>, in every evolve, the model will input a sequence of length <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>, get the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> step and add it to the end of the input sequence. Then, the window will be moved one step later and a new sequence of length <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> will be the input of the next evolve. Here is the math expression.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694683746798.png" alt="" loading="lazy"><br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694683305665.png" alt="" loading="lazy"></p>
+<h2 id="slide-window-models-using-boundary-condition">Slide-Window Models using Boundary Condition</h2>
+<p>In this model, Transformer Decoder is used to take the sequence data as the input like simple slide-window model, but the difference is that it uses Transformer Encoder to encode the boundary condition, and then do the cross attention  in the Decoder.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694683781624.png" alt="" loading="lazy"></p>
+<h1 id="experiments">Experiments</h1>
+<p>During the testing part, I test model using a roll-out method, which means that part of the ground truth data is given to the model as the begin input, and then the model will keep doing the prediction.</p>
+<h2 id="experiments-for-simple-slide-window-models">Experiments for Simple Slide-Window models</h2>
+<p>For simple slide-window models, I found the evolve length in training should be longer than the input length. Below is the effect of 'input length:20, training evolve length:20'<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694684436166.png" alt="" loading="lazy"><br>
+However, after I turned the training evolve length to 100, there was a obvious improvement.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694684490136.png" alt="" loading="lazy"></p>
+<p>The prediction images above used train data as the roll-out begin data. Later, I used test data as the roll-out begin data.</p>
+<p>I also found that downsampling improved the model. WIthout downsampling, the difference between prediction and ground truth was obvious after 1.5 periods.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694684639864.png" alt="" loading="lazy"></p>
+<p>However, after I downsampled the data, the model was able to cover 2 periods nearly.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694684700866.png" alt="" loading="lazy"></p>
+<p>I compared the RNN, LSTM and Transformer Encoder in simple slide-window model, and LSTM had the best performance.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694684771464.png" alt="" loading="lazy"></p>
+<p>I also tried to map the data back to original physical field to calculate the loss. But it didn't make any improvement. Below is the effect using LSTM downsampled simple slide-window model.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694684915232.png" alt="" loading="lazy"></p>
+<h2 id="experiments-for-slide-window-models-using-boundary-condition">Experiments for Slide-Window Models using Boundary Condition</h2>
+<p>In this experiment, I added the boundary condition, which was encoded by the Transformer Encoder. The train data was used as the input of Transformer Decoder. The motivation was using the boundary to guide the prediction.</p>
+<p>Compared with the performance in Transformer Encoder simple slide-window model:<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694685128255.png" alt="" loading="lazy"><br>
+The model using boundary condition manages to learn the general trend of the data, despite some error in the prediction of peak value.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694685164198.png" alt="" loading="lazy"></p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Zihang-Xu-2002.github.io/post/project2/">
+                  <h3 class="post-title">
+                    Research on Visual Following and Prediction Models for Nonlinear Systems Based on Extended Kalman Filter
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

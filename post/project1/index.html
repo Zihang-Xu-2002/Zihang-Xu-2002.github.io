@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Dual-launcher Coordinated Strike System for Multiple Targets | Blog of Zihang</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Zihang-Xu-2002.github.io/favicon.ico?v=1696552284828">
+<link rel="stylesheet" href="https://Zihang-Xu-2002.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Introduction
+This is my first project. I worked on it from Novermber 2020 to October 2021. The objective of this project..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Zihang-Xu-2002.github.io">
+        <img src="https://Zihang-Xu-2002.github.io/images/avatar.png?v=1696552284828" class="site-logo">
+        <h1 class="site-title">Blog of Zihang</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Archives
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Tags
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Zihang-Xu-2002.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Dual-launcher Coordinated Strike System for Multiple Targets</h2>
+            <div class="post-date">2023-08-31</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="introduction">Introduction</h1>
+<p>This is my first project. I worked on it from Novermber 2020 to October 2021. The objective of this project is to develop a robot equipped with a dual-launcher mechanism, with two launchers positioned on upper and lower platforms. The robot will cruise along a track. The mechanical structure of the robot is as shown in the diagram below, with an industrial camera mounted on both the upper and lower platforms. The captured images are processed by two NUCs installed on the robot. The robot developed in this project participated in the RoboMaster competition. In this project, I was responsible for computer vision algorithms.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694109027532.png" alt="" loading="lazy"></p>
+<h1 id="methods">Methods</h1>
+<p>In this project, computer vision algorithms are tasked with recognizing the armors on the opposing robot and calculating the deviation angle. PNP alogrithm is used to calculate the  deviation angle. The primary features on the armors include colored light bars (one set in blue and one set in red) and numerical identification. The armor is shown below:<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694111081120.png" alt="" loading="lazy"></p>
+<p>Initially, I tried to use conventional methods to deal with the recognition task. Main steps include light bars filtering, light bars matching and recognition of the number. The filtering step will get a set of candidate light bars. The matching step will filter out impossible combinations for armors and score combinations that may become an armor. The number recognition step will recognize the numbers on the armor since the competition rule assigns different numbers to different robot types.</p>
+<ul>
+<li>light bars filtering
+<ul>
+<li>set thresholds for the area, aspect ratio, convexity and color of the contours</li>
+</ul>
+</li>
+<li>light bars matching rules
+<ul>
+<li>Two light bars should be parallel.</li>
+<li>Two light bars should have similar length.</li>
+<li>Two light bars should have similar Y-coordinate of the center point.</li>
+<li>Two light bars can determine an armor region, and there shoule be a threshold for the aspect ratio of this region.</li>
+</ul>
+</li>
+</ul>
+<p>However, this conventional method isn't robust enough since the competition venue is filled with numerous lighting props. Also, due to the undulating terrain of the venue, the robot's motion-induced vibrations can impact the stability of the computer vision algorithm. In order to improve the robustness and accuracy, I utilized YoloX to detect the armor.</p>
+<h1 id="results">Results</h1>
+<p>The result is shown below.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694118431651.png" alt="" loading="lazy"></p>
+<p>This robot won the National Second Prize in RoboMaster 2021 Mecha Master Super Match and College Single Tournament (National Tournament).</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Zihang-Xu-2002.github.io/post/about/">
+                  <h3 class="post-title">
+                    About
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

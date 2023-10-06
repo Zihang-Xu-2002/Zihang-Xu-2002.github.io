@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Research on Visual Following and Prediction Models for Nonlinear Systems Based on Extended Kalman Filter | Blog of Zihang</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Zihang-Xu-2002.github.io/favicon.ico?v=1696552284828">
+<link rel="stylesheet" href="https://Zihang-Xu-2002.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="I worked on this project from November 2021 to October 2022 and I was in charge of this project.
+Introduction
+Competing ..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Zihang-Xu-2002.github.io">
+        <img src="https://Zihang-Xu-2002.github.io/images/avatar.png?v=1696552284828" class="site-logo">
+        <h1 class="site-title">Blog of Zihang</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Archives
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Tags
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Zihang-Xu-2002.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Research on Visual Following and Prediction Models for Nonlinear Systems Based on Extended Kalman Filter</h2>
+            <div class="post-date">2023-09-01</div>
+            
+            <div class="post-content" v-pre>
+              <p>I worked on this project from November 2021 to October 2022 and I was in charge of this project.</p>
+<h1 id="introduction">Introduction</h1>
+<p>Competing teams in the Robomaster Competition needs to score points by accurately shooting designated parts of opposing robots. The target robots' motion is quite complex since they are also controlled by operators. This project incorporates neural network algorithms into the robot's auto-aiming system and utilizes Extended Kalman Filter algorithms to enhance the accuracy of the auto-aiming system. The project's algorithm can perform visual tracking of non-linear moving targets, predict the motion of mobile targets, and control the robot's gimbal.</p>
+<p>The flow chart is shown below:<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694594254673.png" alt="" loading="lazy"><br>
+There are two main technical parts: Detection(Object Detection and Key Points Detection) and Prediction.</p>
+<h1 id="detection">Detection</h1>
+<p>The Object Detection is used to get the location and type of robots and the armor. I made a Dataset(10,000+ images) with my teamates. Considering the capacities of the device, My team chose NanoDet to finish this task.</p>
+<p>After the Object Detection, Key Points Detection is used to get the four key points of the armor. I used RepVGG to implement this. The RepVGG block in our task is shown below:<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694594927093.png" alt="" loading="lazy"></p>
+<h1 id="prediction">Prediction</h1>
+<p>The Extended Kalman Filter Model is shown below:<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694595774914.png" alt="" loading="lazy"><br>
+This EKF is used to deal with the noise. Then I use the 3D-coordinates and the 3D-velocity to get the predicted coordinates.</p>
+<h1 id="results">Results</h1>
+<p>Here is the experiment video:<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694132692991.gif" alt="" loading="lazy"></p>
+<p>This algorithm helped our team won the National Third Prize in RoboMaster 2022 Mecha Master Super Match and College Single Tournament.</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Zihang-Xu-2002.github.io/post/project1/">
+                  <h3 class="post-title">
+                    Dual-launcher Coordinated Strike System for Multiple Targets
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

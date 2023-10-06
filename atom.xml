@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://Zihang-Xu-2002.github.io</id>
+    <title>Blog of Zihang</title>
+    <updated>2023-10-06T00:31:29.585Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://Zihang-Xu-2002.github.io"/>
+    <link rel="self" href="https://Zihang-Xu-2002.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://Zihang-Xu-2002.github.io/images/avatar.png</logo>
+    <icon>https://Zihang-Xu-2002.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2023, Blog of Zihang</rights>
+    <entry>
+        <title type="html"><![CDATA[Automatic Math Homework Correction System for Elementary School Students]]></title>
+        <id>https://Zihang-Xu-2002.github.io/post/project3/</id>
+        <link href="https://Zihang-Xu-2002.github.io/post/project3/">
+        </link>
+        <updated>2023-09-10T14:46:35.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="introduction">Introduction</h1>
+<p>I worked in this project from November 2022 to April 2023.</p>
+<p>This project proposed a three-stage for arithmetical exercise correction. I was responsible for literature research and some experiments.</p>
+<h1 id="methods">Methods</h1>
+<p>This method first focuses on the region containing the arithmetical exercise and attaches more attention to generate corresponding arithmetical sequences, then correct each exercise based on rules.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694682315257.png" alt="" loading="lazy"></p>
+<p>Specifically, the detection branch adopts a Feature Pyramid Network (FPN) network for accurate multi-level arithmetical exercises detection. Furthermore, the center-ness scheme is introduced to reduce redundant proposals.</p>
+<p>For the recognition branch, considering the appearance of crabbed text and the high similarity among arithmetical characters, we employ the encoder to extract the high-level difference of features of proposals. Meanwhile, we apply the contrastive learning method to enhance the representation capabilities of the encoder in order to tackle the intricate and various structure of mathematical problems. Then, a Transformer-based decoder is designed to establish the global semantic dependency, which drastically exploits the long-distance correlation of arithmetical exercises.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694682446073.png" alt="" loading="lazy"></p>
+<p>Finally, rule-based templates are designed to correct each type of arithmetical exercises.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694682457818.png" alt="" loading="lazy"></p>
+<h1 id="results">Results</h1>
+<p>This work <a href="https://link.springer.com/article/10.1007/s00521-023-08890-6">'FATE: A Three-Stage Method for Arithmetical Exercise Correction'</a> has been published in 'Neural Computing and Application'.</p>
+<p>I also participated in ICDAR 2023 Competition on Recognition of Multi-line Handwritten Mathematical Expressions with team members and ended with 2nd place.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694682755114.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[iSURE Program ]]></title>
+        <id>https://Zihang-Xu-2002.github.io/post/project4/</id>
+        <link href="https://Zihang-Xu-2002.github.io/post/project4/">
+        </link>
+        <updated>2023-09-09T09:13:40.000Z</updated>
+        <content type="html"><![CDATA[<p>I participated in iSURE program in University of Notre Dame fron July 2023 to August 2023. I worked in Computational Mechanics &amp; Scientific Artificial Intelligence Lab and my mentor was Jianxun Wang.</p>
+<h1 id="introduction">Introduction</h1>
+<p>In this iSURE program, I focused on verifying the performance of RNNs and Transformer on temporal learning. I built RNN, LSTM and Transformer and tested them on temporal data. Models were trained and tested in an auto-regressive method, and I tried some methods and parameters to improve the performance of models.</p>
+<h1 id="data">Data</h1>
+<p>Data in this dataset is collected from the surface of a pump used for enhancing blood flow. There are totally 11539 steps in dataset 2, and PCA dimension reduction is performed on this dataset, hence the importance of channel decreases along the index.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694683155755.png" alt="" loading="lazy"></p>
+<h1 id="models">Models</h1>
+<p>I built two kinds of models:simple slide-wondiw models and slide-window models using boundary condition.</p>
+<h2 id="simple-slide-window-models">Simple Slide-Window models</h2>
+<p>The content within the dashed line is one evolve. Assuming the window length is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>, in every evolve, the model will input a sequence of length <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>, get the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> step and add it to the end of the input sequence. Then, the window will be moved one step later and a new sequence of length <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> will be the input of the next evolve. Here is the math expression.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694683746798.png" alt="" loading="lazy"><br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694683305665.png" alt="" loading="lazy"></p>
+<h2 id="slide-window-models-using-boundary-condition">Slide-Window Models using Boundary Condition</h2>
+<p>In this model, Transformer Decoder is used to take the sequence data as the input like simple slide-window model, but the difference is that it uses Transformer Encoder to encode the boundary condition, and then do the cross attention  in the Decoder.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694683781624.png" alt="" loading="lazy"></p>
+<h1 id="experiments">Experiments</h1>
+<p>During the testing part, I test model using a roll-out method, which means that part of the ground truth data is given to the model as the begin input, and then the model will keep doing the prediction.</p>
+<h2 id="experiments-for-simple-slide-window-models">Experiments for Simple Slide-Window models</h2>
+<p>For simple slide-window models, I found the evolve length in training should be longer than the input length. Below is the effect of 'input length:20, training evolve length:20'<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694684436166.png" alt="" loading="lazy"><br>
+However, after I turned the training evolve length to 100, there was a obvious improvement.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694684490136.png" alt="" loading="lazy"></p>
+<p>The prediction images above used train data as the roll-out begin data. Later, I used test data as the roll-out begin data.</p>
+<p>I also found that downsampling improved the model. WIthout downsampling, the difference between prediction and ground truth was obvious after 1.5 periods.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694684639864.png" alt="" loading="lazy"></p>
+<p>However, after I downsampled the data, the model was able to cover 2 periods nearly.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694684700866.png" alt="" loading="lazy"></p>
+<p>I compared the RNN, LSTM and Transformer Encoder in simple slide-window model, and LSTM had the best performance.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694684771464.png" alt="" loading="lazy"></p>
+<p>I also tried to map the data back to original physical field to calculate the loss. But it didn't make any improvement. Below is the effect using LSTM downsampled simple slide-window model.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694684915232.png" alt="" loading="lazy"></p>
+<h2 id="experiments-for-slide-window-models-using-boundary-condition">Experiments for Slide-Window Models using Boundary Condition</h2>
+<p>In this experiment, I added the boundary condition, which was encoded by the Transformer Encoder. The train data was used as the input of Transformer Decoder. The motivation was using the boundary to guide the prediction.</p>
+<p>Compared with the performance in Transformer Encoder simple slide-window model:<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694685128255.png" alt="" loading="lazy"><br>
+The model using boundary condition manages to learn the general trend of the data, despite some error in the prediction of peak value.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694685164198.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Research on Visual Following and Prediction Models for Nonlinear Systems Based on Extended Kalman Filter]]></title>
+        <id>https://Zihang-Xu-2002.github.io/post/project2/</id>
+        <link href="https://Zihang-Xu-2002.github.io/post/project2/">
+        </link>
+        <updated>2023-09-01T16:33:26.000Z</updated>
+        <content type="html"><![CDATA[<p>I worked on this project from November 2021 to October 2022 and I was in charge of this project.</p>
+<h1 id="introduction">Introduction</h1>
+<p>Competing teams in the Robomaster Competition needs to score points by accurately shooting designated parts of opposing robots. The target robots' motion is quite complex since they are also controlled by operators. This project incorporates neural network algorithms into the robot's auto-aiming system and utilizes Extended Kalman Filter algorithms to enhance the accuracy of the auto-aiming system. The project's algorithm can perform visual tracking of non-linear moving targets, predict the motion of mobile targets, and control the robot's gimbal.</p>
+<p>The flow chart is shown below:<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694594254673.png" alt="" loading="lazy"><br>
+There are two main technical parts: Detection(Object Detection and Key Points Detection) and Prediction.</p>
+<h1 id="detection">Detection</h1>
+<p>The Object Detection is used to get the location and type of robots and the armor. I made a Dataset(10,000+ images) with my teamates. Considering the capacities of the device, My team chose NanoDet to finish this task.</p>
+<p>After the Object Detection, Key Points Detection is used to get the four key points of the armor. I used RepVGG to implement this. The RepVGG block in our task is shown below:<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694594927093.png" alt="" loading="lazy"></p>
+<h1 id="prediction">Prediction</h1>
+<p>The Extended Kalman Filter Model is shown below:<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694595774914.png" alt="" loading="lazy"><br>
+This EKF is used to deal with the noise. Then I use the 3D-coordinates and the 3D-velocity to get the predicted coordinates.</p>
+<h1 id="results">Results</h1>
+<p>Here is the experiment video:<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694132692991.gif" alt="" loading="lazy"></p>
+<p>This algorithm helped our team won the National Third Prize in RoboMaster 2022 Mecha Master Super Match and College Single Tournament.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Dual-launcher Coordinated Strike System for Multiple Targets]]></title>
+        <id>https://Zihang-Xu-2002.github.io/post/project1/</id>
+        <link href="https://Zihang-Xu-2002.github.io/post/project1/">
+        </link>
+        <updated>2023-08-31T20:35:14.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="introduction">Introduction</h1>
+<p>This is my first project. I worked on it from Novermber 2020 to October 2021. The objective of this project is to develop a robot equipped with a dual-launcher mechanism, with two launchers positioned on upper and lower platforms. The robot will cruise along a track. The mechanical structure of the robot is as shown in the diagram below, with an industrial camera mounted on both the upper and lower platforms. The captured images are processed by two NUCs installed on the robot. The robot developed in this project participated in the RoboMaster competition. In this project, I was responsible for computer vision algorithms.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694109027532.png" alt="" loading="lazy"></p>
+<h1 id="methods">Methods</h1>
+<p>In this project, computer vision algorithms are tasked with recognizing the armors on the opposing robot and calculating the deviation angle. PNP alogrithm is used to calculate the  deviation angle. The primary features on the armors include colored light bars (one set in blue and one set in red) and numerical identification. The armor is shown below:<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694111081120.png" alt="" loading="lazy"></p>
+<p>Initially, I tried to use conventional methods to deal with the recognition task. Main steps include light bars filtering, light bars matching and recognition of the number. The filtering step will get a set of candidate light bars. The matching step will filter out impossible combinations for armors and score combinations that may become an armor. The number recognition step will recognize the numbers on the armor since the competition rule assigns different numbers to different robot types.</p>
+<ul>
+<li>light bars filtering
+<ul>
+<li>set thresholds for the area, aspect ratio, convexity and color of the contours</li>
+</ul>
+</li>
+<li>light bars matching rules
+<ul>
+<li>Two light bars should be parallel.</li>
+<li>Two light bars should have similar length.</li>
+<li>Two light bars should have similar Y-coordinate of the center point.</li>
+<li>Two light bars can determine an armor region, and there shoule be a threshold for the aspect ratio of this region.</li>
+</ul>
+</li>
+</ul>
+<p>However, this conventional method isn't robust enough since the competition venue is filled with numerous lighting props. Also, due to the undulating terrain of the venue, the robot's motion-induced vibrations can impact the stability of the computer vision algorithm. In order to improve the robustness and accuracy, I utilized YoloX to detect the armor.</p>
+<h1 id="results">Results</h1>
+<p>The result is shown below.<br>
+<img src="https://Zihang-Xu-2002.github.io/post-images/1694118431651.png" alt="" loading="lazy"></p>
+<p>This robot won the National Second Prize in RoboMaster 2021 Mecha Master Super Match and College Single Tournament (National Tournament).</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[About]]></title>
+        <id>https://Zihang-Xu-2002.github.io/post/about/</id>
+        <link href="https://Zihang-Xu-2002.github.io/post/about/">
+        </link>
+        <updated>2019-01-16T19:09:48.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>Welcome to my blog, nice to meet you！🤝</p>
+</blockquote>
+<h2 id="about-me">👨‍💻 About me</h2>
+<p>I am Zihang Xu(徐子航), a senior student in ChienShiung Wu College of Southeast University. I major in artificial intelligence. Now I am an exchange student in UCI.</p>
+<h2 id="about-this-blog">About this blog</h2>
+<p>I want to share my projects in this blog.<br>
+11/2020-10/2021 : <a href="../project1/index.html">Dual-launcher Coordinated Strike System for Multiple Targets</a></p>
+<p>11/2021-11/2022 : <a href="../project2/index.html">Research on Visual Following and Prediction Models for Nonlinear Systems Based on Extended Kalman Filter</a></p>
+<p>11/2021-4/2023 : <a href="../project3/index.html">Automatic Math Homework Correction System for Elementary School Students</a></p>
+<p>7/2023-8/2023 : <a href="../project4/index.html">iSURE Program</a></p>
+<h2 id="contact">📬 Contact</h2>
+<p>Tel: (+1)5743004120<br>
+E-mail: zxu18@uci.edu</p>
+]]></content>
+    </entry>
+</feed>
